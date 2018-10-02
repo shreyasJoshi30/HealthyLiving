@@ -1,0 +1,130 @@
+﻿@model IEnumerable<HL_V1.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Approve", "Articles", FormMethod.Post, new { @class = "form-horizontal", role = "form", app = Model }))
+
+
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Content)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.AuthorID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArticleStatus)
+                </th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th>
+                        Action
+                    </th>
+                }
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    @*<td>
+                            <div class="w3-panel w3-card">
+                                @Html.Raw(item.Content)
+                            </div>
+
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuthorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArticleStatus)
+                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+
+                            @if (item.ArticleStatus == "I")
+                            {
+                                @Html.ActionLink("Approve", "Approve", new { id = item.ArticleID })
+                            }
+                            else
+                            {
+
+                                @Html.ActionLink("Archive", "Archive", new { id = item.ArticleID })
+                            }
+                        </td>
+                    }
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ArticleID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ArticleID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ArticleID })
+                    </td>
+
+                </tr>
+            </tbody>
+        }
+
+    </table>
+}
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/editorConfig.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+}
+
+
+<script>
+    $(document).ready(function () {
+        $('.table').DataTable();
+    });
+</script>
+
+
+

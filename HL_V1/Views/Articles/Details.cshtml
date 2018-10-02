@@ -1,0 +1,65 @@
+﻿@model HL_V1.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Article</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        
+
+        <dd style="font-size:xx-large;font-family:'Monotype Corsiva';color:#b04726">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        
+
+        <dd>
+            @Html.Raw(Model.Content)
+            
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

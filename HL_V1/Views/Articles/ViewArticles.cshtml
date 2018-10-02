@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HL_V1.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var result = from item in Model
+                 where item.ArticleStatus.Equals("A")
+                 select item;
+}
+<br>
+<div class="col-md-12 responsive">
+    @foreach (var item in result)
+
+    {
+
+        <div style="font-size:xx-large;font-family:'Monotype Corsiva';color:#b04726">
+
+            @Html.DisplayFor(modelItem => item.Title)
+
+
+        </div>
+
+        <div style="border:2px solid #cdc2c2;">
+            @Html.Raw(item.Content)
+        </div>
+        <br>
+    }
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script src="~/Scripts/editorConfig.js"></script>
+}
+
