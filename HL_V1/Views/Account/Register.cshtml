@@ -1,6 +1,7 @@
 ﻿@model HL_V1.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Contents/bootstrap-datepicker.min.css" rel="stylesheet" />
 
@@ -46,11 +47,11 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.BirthDate, htmlAttributes: new { @class = "control-label col-md-2 " })
-        <div class="col-md-3  input-group date" data-provide="datepicker">
+        <div class="col-md-3  input-group date" data-provide="datepicker" data-date-end-date="0d">
 
-            @Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control " } })
+            @Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control " ,style = "margin-left: 15px;" } })
 
-            <div class="input-group-addon ">
+            <div class="input-group-addon " style="border-left-width: 15px;">
                 <span class="glyphicon glyphicon-th"></span>
             </div>
             @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })

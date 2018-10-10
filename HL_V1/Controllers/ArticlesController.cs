@@ -68,7 +68,7 @@ namespace HL_V1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ArticleID,Title,Content,Category,ArticleStatus")] Article article)
+        public ActionResult Create([Bind(Include = "ArticleID,Title,Content,Category,ArticleStatus,ArticleCover")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace HL_V1.Controllers
                 article.AuthorID= User.Identity.GetUserId();
                 article.ArticleStatus = "I";
                 article.ModifiedOn = DateTime.Now;
-
+                
                 db.Articles.Add(article);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,7 +106,7 @@ namespace HL_V1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ArticleID,AuthorID,Title,Content,Category,PublishDate,ArticleStatus")] Article article)
+        public ActionResult Edit([Bind(Include = "ArticleID,AuthorID,Title,Content,Category,PublishDate,ArticleStatus,ArticleCover")] Article article)
         {
             //article.PublishDate = DateTime.Now;
             if (ModelState.IsValid)
@@ -161,7 +161,10 @@ namespace HL_V1.Controllers
             return View(db.Articles.ToList());
         }
 
-
+        public ActionResult ArticleHome()
+        {
+            return View(db.Articles.ToList());
+        }
 
         //// POST: Articles/Approve/5
         //[HttpPost]

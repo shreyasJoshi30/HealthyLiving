@@ -23,6 +23,9 @@ namespace HL_V1.Models
         public DateTime PublishDate { get; set; }
         public string ArticleStatus { get; set; }
 
+        [Display(Name = "Cover Image")]
+        public string ArticleCover { get; set; }
+
         public DateTime ModifiedOn { get; set; }
         public string ModifiedBy { get; set; }
     }

@@ -8,6 +8,22 @@ namespace HL_V1.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.ArticleApproveViewModels",
+                c => new
+                    {
+                        ArticleID = c.Guid(nullable: false),
+                        Title = c.String(),
+                        Content = c.String(),
+                        AuthorID = c.String(),
+                        Category = c.String(),
+                        PublishDate = c.DateTime(nullable: false),
+                        ArticleStatus = c.String(),
+                        ModifiedOn = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(),
+                    })
+                .PrimaryKey(t => t.ArticleID);
+            
+            CreateTable(
                 "dbo.RegisterViewModels",
                 c => new
                     {
@@ -111,6 +127,7 @@ namespace HL_V1.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RegisterViewModels");
+            DropTable("dbo.ArticleApproveViewModels");
         }
     }
 }

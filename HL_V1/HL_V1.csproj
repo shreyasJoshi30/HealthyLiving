@@ -231,17 +231,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809290631453_init.cs" />
-    <Compile Include="Migrations\201809290631453_init.Designer.cs">
-      <DependentUpon>201809290631453_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809290642351_articke.cs" />
-    <Compile Include="Migrations\201809290642351_articke.Designer.cs">
-      <DependentUpon>201809290642351_articke.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810020600369_newContext.cs" />
-    <Compile Include="Migrations\201810020600369_newContext.Designer.cs">
-      <DependentUpon>201810020600369_newContext.cs</DependentUpon>
+    <Compile Include="Migrations\201810100352259_init.cs" />
+    <Compile Include="Migrations\201810100352259_init.Designer.cs">
+      <DependentUpon>201810100352259_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -426,6 +418,14 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\food.jpg" />
+    <Content Include="Content\Images\fork.jpg" />
+    <Content Include="Content\Images\fruits.png" />
+    <Content Include="Content\Images\image.jpg" />
+    <Content Include="Content\Images\oranges.jpg" />
+    <Content Include="Content\Images\soup.jpg" />
+    <Content Include="Content\Images\table.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -444,6 +444,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <None Include="Properties\PublishProfiles\MyHealthyLiving - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -806,6 +807,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Articles\ArticleHome.cshtml" />
+    <Content Include="Views\Shared\_LayoutEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -820,18 +823,12 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809290631453_init.resx">
-      <DependentUpon>201809290631453_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809290642351_articke.resx">
-      <DependentUpon>201809290642351_articke.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810020600369_newContext.resx">
-      <DependentUpon>201810020600369_newContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810100352259_init.resx">
+      <DependentUpon>201810100352259_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
