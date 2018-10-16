@@ -1,0 +1,67 @@
+﻿@model HL_V1.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User1.HomeTown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User1.HomeTown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User2.HomeTown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User2.HomeTown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservation_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservation_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,185 @@
+﻿@model IEnumerable<HL_V1.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Result != null)
+    {
+<div class="alert alert-success">@ViewBag.Result</div>
+    }
+
+<h2>Index</h2>
+
+@if (!User.IsInRole("Nutri"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            @if (!User.IsInRole("Nutri"))
+            {
+                <th>
+                    Nutritionist
+                </th>
+            }
+            @if (!User.IsInRole("NUser"))
+            {
+                <th>
+                    @*@Html.DisplayNameFor(model => model.User2.Email)*@
+                    User
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.ReservedDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation_status)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                @*<th>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+            }
+
+            @if (!User.IsInRole("NUser"))
+            {
+                <th>
+                    Action
+                </th>
+            }
+
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        var status = "";
+        <tbody>
+
+            @if (("I").Equals(item.Reservation_status))
+            {
+                status = "REQUESTED";
+            }
+            else if (("A").Equals(item.Reservation_status))
+            {
+                status = "ACCEPTED";
+            }
+            else if (("X").Equals(item.Reservation_status))
+            {
+                status = "CANCELLED";
+            }
+            else if (("C").Equals(item.Reservation_status))
+            {
+                status = "COMPLETED";
+            }
+
+            <tr>
+                @if (!User.IsInRole("Nutri"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User1.Email)
+                    </td>
+                }
+                @if (!User.IsInRole("NUser"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User2.Email)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservedDate)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Reservation_status)*@
+                    @status
+                </td>
+
+                @if (User.IsInRole("Admin"))
+                {
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedOn)
+                    </td>
+
+                }
+
+                @if (!User.IsInRole("NUser"))
+                {
+
+                    if (("I").Equals(item.Reservation_status) && (User.IsInRole("Admin") || User.IsInRole("Nutri")))
+                    {
+
+
+                        <td>
+                            @Html.ActionLink("Accept", "Accept", new { id = item.ReservationID })
+                        </td>
+                    }
+
+
+                    if (("A").Equals(item.Reservation_status) && !User.IsInRole("NUser"))
+                    {
+                        <td>
+                            @Html.ActionLink("Mark Complete", "Complete", new { id = item.ReservationID })
+                        </td>
+                    }
+
+
+                }
+
+                <td>
+                    @if ((("I").Equals(item.Reservation_status) && User.IsInRole("NUser")) || (User.IsInRole("Admin")))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID })
+                    }
+
+                    |
+
+                    @Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+
+                    @if (!User.IsInRole("Nutri"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+                    }
+
+
+                </td>
+
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+}
+
+
+<script>
+    $(document).ready(function () {
+        $('.table').DataTable();
+    });
+</script>
+

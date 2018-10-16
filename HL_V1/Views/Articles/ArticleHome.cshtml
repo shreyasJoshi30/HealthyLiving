@@ -15,7 +15,7 @@
 <h2>ArticleHome</h2>
 <div class="container">
     <div class="row">
-        @foreach (var item in Model)
+        @foreach (var item in result)
         {
 
             <div class="col-md-3">
@@ -23,15 +23,16 @@
                     <div class="card">
                         <div class="face front">
                             <div class="inner">
-                                <img src=@Html.DisplayFor(modelItem => item.ArticleCover)>
                                 <div>@Html.DisplayFor(modelItem => item.Title)</div>
+                                <img src=@Html.DisplayFor(modelItem => item.ArticleCover) style="width:270px;height:180px">
+                                
                             </div>
                         </div>
                         <div class="face back">
                             <div class="inner text-center">
                                 @Html.Raw(item.Content.Substring(0, item.Content.Length > 50 ? 50 : item.Content.Length))
-                                
-                                <button type="button" class="btn btn-default">Know More</button>
+
+                                @Html.ActionLink("Read More...", "Details", new { id = item.ArticleID }) 
                             </div>
                         </div>
                     </div>
@@ -41,81 +42,7 @@
     </div>
 </div>
 
-@*-------------------code end-------------------------------*@
 
-@*<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="flip">
-                <div class="card">
-                    <div class="face front">
-                        <div class="inner">
-                            <img src="https://images.pexels.com/photos/1023756/pexels-photo-1023756.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
-                        </div>
-                    </div>
-                    <div class="face back">
-                        <div class="inner text-center">
-                            <h3>Improved efficiency through automation</h3>
-                            <button type="button" class="btn btn-default">Know More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="flip">
-                <div class="card">
-                    <div class="face front">
-                        <div class="inner">
-                            <img src="https://images.pexels.com/photos/1023756/pexels-photo-1023756.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
-
-                        </div>
-                    </div>
-                    <div class="face back">
-                        <div class="inner text-center">
-                            <h3>Improved efficiency through automation</h3>
-                            <button type="button" class="btn btn-default">Know More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="flip">
-                <div class="card">
-                    <div class="face front">
-                        <div class="inner">
-                            <img src="https://images.pexels.com/photos/1023756/pexels-photo-1023756.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
-                        </div>
-                    </div>
-                    <div class="face back">
-                        <div class="inner text-center">
-                            <h3>Improved efficiency through automation</h3>
-                            <button type="button" class="btn btn-default">Know More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="flip">
-                <div class="card">
-                    <div class="face front">
-                        <div class="inner">
-                            <img src="https://images.pexels.com/photos/1023756/pexels-photo-1023756.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
-                        </div>
-                    </div>
-                    <div class="face back">
-                        <div class="inner text-center">
-                            <h3>Improved efficiency through automation</h3>
-                            <button type="button" class="btn btn-default">Know More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
 
 
 <style>

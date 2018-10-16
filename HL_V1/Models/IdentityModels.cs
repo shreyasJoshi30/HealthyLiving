@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -27,6 +28,10 @@ namespace HL_V1.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+
+        public virtual ICollection<Reservation> Reservations_NId { get; set; }
+        public virtual ICollection<Reservation> Reservations_UId { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -44,5 +49,9 @@ namespace HL_V1.Models
         public System.Data.Entity.DbSet<HL_V1.Models.RegisterViewModel> RegisterViewModels { get; set; }
 
         public System.Data.Entity.DbSet<HL_V1.Models.ArticleApproveViewModel> ArticleApproveViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<HL_V1.Models.Reservation> Reservations { get; set; }
+
+        //public System.Data.Entity.DbSet<HL_V1.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

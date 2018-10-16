@@ -10,6 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/w3card.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -25,13 +26,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("View Articles", "ViewArticles", "Articles")</li>
                     <li>@Html.ActionLink("My Articles", "", "Articles")</li>
                     <li>@Html.ActionLink("ArticleHome", "ArticleHome", "Articles")</li>
-
+                    <li>@Html.ActionLink("Reservations", "", "Reservations")</li>
 
 
                 </ul>
@@ -43,7 +44,7 @@
 
 
 
-    <div class="fadeOut">
+    <div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -93,7 +94,130 @@
         </div>
     </div>
 
-    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /*body {
+            font-family: Arial, Helvetica, sans-serif;
+        }*/
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 5px;
+        }
+
+        .row {
+            margin: 0 -5px;
+        }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        /* Responsive columns */
+        @@media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #5dbc65;
+            color: white;
+        }
+
+        .glyphiconL {
+            font-size: 50px;
+        }
+
+        .glyphiconArrow {
+            font-size: 30px;
+        }
+    </style>
+
+    <br>
+
+    @*https://columbiaairport.com/wp-content/uploads/2015/12/CAE-Website-Full-Background-Texture1902x1200-9.jpg*@
+    <div class="w3-panel w3-card w3-hover-shadow" style="background-image:url(/Content/Images/bg_text.jpg);">
+
+        <p style="font-family:'Monotype Corsiva';font-size:xx-large">
+
+
+            <b>Being active</b>, maintaining a healthy weight and eating healthy and balanced meals can are just
+            some of the simple lifestyle changes you can make to reduce your risk.
+
+            We are a non-government, non-profit, community based-organisation with offices throughout Australia.
+            we are an independent, member organisation that aims to promote the health and wellbeing of all Australians.
+            <br><br>
+            By Joining with us, You can access Informative articles published by renowned Nutritionists and experienced clients.
+
+            Moreover, if you like the client, you can book a reservation with the client.
+
+        </p>
+
+        <div style="text-align:right">
+
+
+            <form method="get" action="/Account/Register">
+                <span class="glyphicon glyphicon-hand-right glyphiconArrow"></span>
+                <input type="submit" value="Register Now" class="btn btn-primary btn-lg" />
+            </form>
+        </div>
+        <br>
+
+
+
+    </div>
+
+
+
+    <br>
+
+    <div class="column">
+        <div class="card">
+            <p><i class="glyphicon glyphicon-user glyphiconL"></i></p>
+            <h3>11+</h3>
+            <p>Partners</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <p><i class="glyphicon glyphicon-ok glyphiconL"></i></p>
+            <h3>55+</h3>
+            <p>Projects</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <p><i class="glyphicon glyphicon-thumbs-up glyphiconL"></i></p>
+            <h3>100+</h3>
+            <p>Happy Clients</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <p><i class="glyphicon glyphicon-calendar glyphiconL"></i></p>
+            <h3>100+</h3>
+            <p>Meetings</p>
+        </div>
+    </div>
+
 
 
 
